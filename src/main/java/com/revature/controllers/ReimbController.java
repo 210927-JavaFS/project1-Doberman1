@@ -55,14 +55,12 @@ public class ReimbController implements Controller{
 				reimb.setResolved(newreimb.getResolved());
 				reimb.setStatus(newreimb.getStatus());
 				
-				if(reimbService.updateReimb(reimb)) {
+				if(reimbService.updateReimb(reimb)){
 					ctx.status(200);
 				}else {
 					ctx.status(400);
 				}
 				
-			}else {
-				ctx.status(400);
 			}
 			
 		}

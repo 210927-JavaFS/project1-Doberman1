@@ -9,7 +9,6 @@ import javax.persistence.Id;
 public class REIMBURSEMENT_TYPE {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int reimbTypeID;
 	private String reimbType;
 	

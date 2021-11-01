@@ -21,16 +21,19 @@ public class reimbDAOI implements reimbDAO{
 	
 	public List<REIMBURSEMENT> findReimbByUserID(int userID) {
 		
-		System.out.println("in DAOI");
 		List<REIMBURSEMENT> list = findAllReimb();
-		List<REIMBURSEMENT> newlist = null;
+		List<REIMBURSEMENT> newlist = findAllReimb();
+		System.out.print(list);
+		
+		
 		for(REIMBURSEMENT r : list) {
-			if(userID == r.getAuthor().getUsersID()) {
-				newlist.add(r);
+			if(userID != r.getAuthor().getUsersID()) {
+				newlist.remove(r);
 			}
 			
 		}
 		
+		System.out.print(newlist);
 		return newlist;
 		//Session session = HibernateUtil.getSession();
 		//return session.createQuery("FROM REIMBURSEMENT").list();

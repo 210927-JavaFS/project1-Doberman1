@@ -94,7 +94,7 @@ submitApproval.onclick = changeReimbStatus;
         let newDescription = document.getElementById("description").value; 
         let newType = document.getElementsByClassName("theType").value;
         let newUserRole = {userRoleID: 1, userRole: "employee"}
-        let newAuthor = {username: "isthisbadformUWU", password: 111, firstName: "Elves", lastName: "Prestintoservice", email:"oopsie", userRole:newUserRole}
+        let newAuthor = {username: "isthisbadform", password: 111, firstName: "Elves", lastName: "Prestintoservice", email:"oopsie", userRole:newUserRole}
         let newStatus = {reimbStatusID: 4, reimbStatus: "pending"};
         let newTypeObj = {reimbTypeID: newType, reimbType: document.getElementsByClassName("theType").id}
 
@@ -143,18 +143,24 @@ submitApproval.onclick = changeReimbStatus;
            let row = document.createElement("tr");
        
            for(let cell in employee){
-             let td = document.createElement("td");
-             if(cell === "author"){
-                td.innerText = employee[cell].firstName+" "+employee[cell].lastName;
-             }else if(cell === "resolver"){
-                if(employee[cell] != null){td.innerText = employee[cell].firstName+" "+employee[cell].lastName;}else{td.innerText = null}
-             }else if(cell === "status"){
-               td.innerText=employee[cell].reimbStatus;
-             }else if(cell === "type"){
-                td.innerText=employee[cell].reimbType;
-              }else{
-                td.innerText=employee[cell];
-             }
+            let td = document.createElement("td");
+            if(cell === "author"){
+               td.innerText = employee[cell].firstName+" "+employee[cell].lastName;
+            }else if(cell === "resolver"){
+               if(employee[cell] != null){td.innerText = employee[cell].firstName+" "+employee[cell].lastName;}else{td.innerText = null}
+            }else if(cell === "status"){
+              td.innerText=employee[cell].reimbStatus;
+            }else if(cell === "type"){
+               td.innerText=employee[cell].reimbType;
+             }else if(cell === "password"){
+               break;
+             }else if(cell === "submitted"){
+               td.innerText= employee[cell];
+             }else if(cell === "resolved"){
+               td.innerText= employee[cell];
+             }else{
+               td.innerText=employee[cell];
+            }
              row.appendChild(td);
            }
            tbody.appendChild(row);
@@ -240,7 +246,7 @@ submitApproval.onclick = changeReimbStatus;
         let newDescription = document.getElementById("description").value; 
         let newType = document.getElementsByClassName("theType").value;
         let newUserRole = {userRoleID: 1, userRole: "employee"}
-        let newAuthor = {username: "isthisbadformUWU", password: 111, firstName: "Elves", lastName: "Prestintoservice", email:"oopsie", userRole:newUserRole}
+        let newAuthor = {username: "isthisbadform", password: 111, firstName: "Elves", lastName: "Prestintoservice", email:"oopsie", userRole:newUserRole}
         let newStatus = {reimbStatusID: document.getElementsByClassName("theStatus").value, reimbStatus: document.getElementsByClassName("theStatus").id};
         let newTypeObj = {reimbTypeID: newType, reimbType: document.getElementsByClassName("theType").id}
 
