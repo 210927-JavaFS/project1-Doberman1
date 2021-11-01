@@ -9,7 +9,7 @@ public class RoleService {
 
 private userRolesDAO rolesDAO = new userRolesDAOI();
 	
-	USER_ROLES getStatus(USERS user){
+	public USER_ROLES getRole(USERS user){
 		
 		USER_ROLES role = rolesDAO.getRole(user);
 		if(role != null) {

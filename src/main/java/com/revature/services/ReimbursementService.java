@@ -15,6 +15,7 @@ public class ReimbursementService {
 		
 	}
 	public List<REIMBURSEMENT> findReimbByUserID(int userID){
+		System.out.println("in service");
 		return reimbDAO.findReimbByUserID(userID);
 		
 	}

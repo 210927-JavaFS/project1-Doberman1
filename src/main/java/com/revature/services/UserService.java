@@ -16,7 +16,7 @@ public class UserService {
 		
 		return userDAO.updateUser(user);
 	}
-	USERS getUser(String username) {
+	public USERS getUser(String username) {
 		USERS user = userDAO.getUser(username);
 		if(user != null) {
 			

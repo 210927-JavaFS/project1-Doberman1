@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import com.revature.services.LoginService;
 import com.revature.services.ReimbursementService;
 import com.revature.models.REIMBURSEMENT;
 import io.javalin.Javalin;
@@ -17,20 +18,23 @@ public class ReimbController implements Controller{
 		//if(ctx.req.getSession(false) !=null) {
 		List<REIMBURSEMENT> allList = reimbService.findAllReimb();
 		
-		
+		if(allList!=null) {
 		ctx.json(allList);
 		ctx.status(200);
 		//}else {
 		//	ctx.status(401);
 		//}
-		
+		}else {
+			ctx.status(400);
+		}
 	};
 	
 	public Handler createReimb = (ctx) -> {
 		//if(ctx.req.getSession(false) !=null) {
 		REIMBURSEMENT reimb = ctx.bodyAsClass(REIMBURSEMENT.class);
+		reimb.setAuthor(LoginService.user);
 		if(reimbService.createReimb(reimb)) {
-			ctx.status(201);
+			ctx.status(200);
 		}else {
 			ctx.status(400);
 		}
@@ -41,12 +45,29 @@ public class ReimbController implements Controller{
 	
 	public Handler updateReimb = (ctx) -> {
 		//if(ctx.req.getSession(false) !=null) {
-		REIMBURSEMENT reimb = ctx.bodyAsClass(REIMBURSEMENT.class);
-		if(reimbService.updateReimb(reimb)) {
-			ctx.status(200);
-		}else {
-			ctx.status(400);
+		List<REIMBURSEMENT> allReimb = reimbService.findAllReimb();
+		REIMBURSEMENT newreimb = ctx.bodyAsClass(REIMBURSEMENT.class);
+		REIMBURSEMENT singleReimb = reimbService.findByID(newreimb.getAmount());
+		REIMBURSEMENT reimb = singleReimb;
+		for(REIMBURSEMENT r : allReimb) {
+			
+			if(r.getReimbID() == newreimb.getAmount()) {
+				reimb.setResolved(newreimb.getResolved());
+				reimb.setStatus(newreimb.getStatus());
+				
+				if(reimbService.updateReimb(reimb)) {
+					ctx.status(200);
+				}else {
+					ctx.status(400);
+				}
+				
+			}else {
+				ctx.status(400);
+			}
+			
 		}
+		
+		
 	//	}else {
 		//	ctx.status(401);
 	//	}
@@ -54,15 +75,16 @@ public class ReimbController implements Controller{
 	
 	public Handler findReimbByUserID = (ctx)->{
 	//	if(ctx.req.getSession(false) !=null) {
-		String id = ctx.pathParam("userReimbID");
-		try {
-		int userID = Integer.parseInt(id);
-		List<REIMBURSEMENT> singleReimbList = reimbService.findReimbByUserID(userID);
+		int id = LoginService.user.getUsersID();
+		//try {
+		//int userID = Integer.parseInt(id);
+		List<REIMBURSEMENT> singleReimbList = reimbService.findReimbByUserID(id);
 		ctx.json(singleReimbList);
-		}catch(NumberFormatException e){
-			e.printStackTrace();
-			ctx.status(406);
-		}
+		ctx.status(200);
+		//}catch(NumberFormatException e){
+		//	e.printStackTrace();
+		//	ctx.status(406);
+		//}
 		//}else {
 	//		ctx.status(401);
 	//	}
@@ -75,6 +97,7 @@ public class ReimbController implements Controller{
 		int userID = Integer.parseInt(id);
 		REIMBURSEMENT singleReimb = reimbService.findByID(userID);
 		ctx.json(singleReimb);
+		ctx.status(200);
 		}catch(NumberFormatException e){
 			e.printStackTrace();
 			ctx.status(406);
@@ -89,19 +112,11 @@ public class ReimbController implements Controller{
 	public void addRoutes(Javalin app) {
 		app.get("/reimbursements", this.getAllReimbursements);
 		app.get("/reimbursements/:reimbID", this.findByID);
-		app.get("/reimbursements/user/:userReimbID", this.findReimbByUserID);
+		app.get("/userinfo", this.findReimbByUserID);
 		app.post("/reimbursements", this.createReimb);
 		app.put("/reimbursements",this.updateReimb);
 		
 	}
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

@@ -1,5 +1,7 @@
 package com.revature.repos;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -42,8 +44,24 @@ public class usersDAOI implements usersDAO{
 
 	@Override
 	public USERS getUser(String username) {
+		
+		List<USERS> allUsers = findAllUsers();
+		int ID = 0;
+		
+		for(USERS user : allUsers) {
+			if(user.getUsername().equals(username)) {
+				 ID = user.getUsersID();
+				
+			}
+		}
+		
 		Session session = HibernateUtil.getSession();
-		return session.get(USERS.class, username);
+		return session.get(USERS.class, ID);
 	}
 
+	public List<USERS> findAllUsers(){
+		
+		Session session = HibernateUtil.getSession();
+		return session.createQuery("FROM USERS").list();
+	}
 }

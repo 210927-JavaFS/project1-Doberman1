@@ -11,27 +11,40 @@ import com.revature.utils.HibernateUtil;
 
 public class reimbDAOI implements reimbDAO{
 
-	@Override
+	
 	public List<REIMBURSEMENT> findAllReimb() {
 		Session session = HibernateUtil.getSession();
 		return session.createQuery("FROM REIMBURSEMENT").list();
 		//return null;
 	}
 
-	@Override
+	
 	public List<REIMBURSEMENT> findReimbByUserID(int userID) {
-		Session session = HibernateUtil.getSession();
-		return session.createQuery("FROM REIMBURSEMENT AS R WHERE R.author = "+Integer.toString(userID)).list();
+		
+		System.out.println("in DAOI");
+		List<REIMBURSEMENT> list = findAllReimb();
+		List<REIMBURSEMENT> newlist = null;
+		for(REIMBURSEMENT r : list) {
+			if(userID == r.getAuthor().getUsersID()) {
+				newlist.add(r);
+			}
+			
+		}
+		
+		return newlist;
+		//Session session = HibernateUtil.getSession();
+		//return session.createQuery("FROM REIMBURSEMENT").list();
+		
 		//return null;
 	}
 
-	@Override
+	
 	public REIMBURSEMENT findByID(int ID) {
 		Session session = HibernateUtil.getSession();
 		return session.get(REIMBURSEMENT.class, ID);
 	}
 
-	@Override
+	
 	public boolean createReimb(REIMBURSEMENT reimb) {
 		try {
 		Session session = HibernateUtil.getSession();
@@ -47,7 +60,7 @@ public class reimbDAOI implements reimbDAO{
 		}
 	}
 
-	@Override
+	
 	public boolean updateReimb(REIMBURSEMENT reimb) {
 		try {
 			Session session = HibernateUtil.getSession();

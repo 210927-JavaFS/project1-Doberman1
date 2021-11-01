@@ -1,39 +1,34 @@
 --Create Database project_1;
 
-CREATE TABLE ERS_USER_ROLES(
-	ERS_USER_ROLE_ID INT PRIMARY KEY,
-	USER_ROLE VARCHAR(10) NOT NULL
-);
+INSERT INTO hibernate.user_roles (userroleid,userrole)
+	VALUES (1,'employee');
+INSERT INTO hibernate.user_roles (userroleid,userrole)
+	VALUES (2,'manager');
 
-CREATE TABLE ERS_REIMBURSEMENT_TYPE(
-	REIMB_TYPE_ID INT PRIMARY KEY,
-	REIMB_TYPE VARCHAR(10) NOT NULL
-);
+INSERT INTO hibernate.reimbursement_type (reimbtypeid,reimbtype)
+	VALUES (1,'lodging');
+INSERT INTO hibernate.reimbursement_type (reimbtypeid,reimbtype)
+	VALUES (2,'food');
+INSERT INTO hibernate.reimbursement_type (reimbtypeid,reimbtype)
+	VALUES (3,'travel');
+INSERT INTO hibernate.reimbursement_type (reimbtypeid,reimbtype)
+	VALUES (4,'other');
 
-CREATE TABLE ERS_REIMBURSEMENT_STATUS(
-	REIMB_STATUS_ID INT PRIMARY KEY,
-	REIMB_STATUS VARCHAR(10) NOT NULL
-);
+INSERT INTO hibernate.reimbursement_status (reimbstatusid)
+	VALUES (1);
+INSERT INTO hibernate.reimbursement_status (reimbstatusid,reimbstatus)
+	VALUES (2,'approved');
+INSERT INTO hibernate.reimbursement_status (reimbstatusid,reimbstatus)
+	VALUES (3,'denied');
+INSERT INTO hibernate.reimbursement_status (reimbstatusid,reimbstatus)
+	VALUES (4,'pending');
 
-CREATE TABLE ERS_USERS(
-	ERS_USERS_ID INT PRIMARY KEY,
-	ERS_USERNAME VARCHAR(50) UNIQUE NOT NULL,
-	ERS_PASSWORD VARCHAR(50) NOT NULL,
-	USER_FIRST_NAME VARCHAR(100) NOT NULL,
-	USER_LAST_NAME VARCHAR(100) NOT NULL,
-	USER_EMAIL VARCHAR(150) UNIQUE NOT NULL,
-	USER_ROLE_ID INT REFERENCES ERS_USER_ROLES (ERS_USER_ROLE_ID)
-);
+INSERT INTO hibernate.users (usersid,email,firstname,lastname,"password",username,userroleid)
+	VALUES (1,'Tim@revature.net','Timmy','Jimbob','-268132974','tim',1);
+INSERT INTO hibernate.users (usersid,email,firstname,lastname,"password",username,userroleid)
+	VALUES (2,'Penny@yahoo.com','Penny','Smith','-268132974','penny',1);
+INSERT INTO hibernate.users (usersid,email,firstname,lastname,"password",username,userroleid)
+	VALUES (3,'Bob@gmail.com','Bobby','Barker','-268132974','bob',1);
+INSERT INTO hibernate.users (usersid,email,firstname,lastname,"password",username,userroleid)
+	VALUES (4,'Blake@hotmail.com','Blake','Dobbs','1216985755','blake',2);
 
-CREATE TABLE ERS_REIMBURSEMENT(
-	REIMB_ID INT PRIMARY KEY,
-	REIMB_AMOUNT INT NOT NULL,
-	REIMB_SUBMITTED TIMESTAMP NOT NULL,
-	REIMB_RESOLVED TIMESTAMP,
-	REIMB_DESCRIPTION VARCHAR(250),
-	REIMB_RECEIPT BYTEA,
-	REIMB_AUTHOR INT REFERENCES ERS_USERS(ERS_USERS_ID),
-	REIMB_RESOLVER INT REFERENCES ERS_USERS(ERS_USERS_ID),
-	REIMB_STATUS_ID INT REFERENCES ERS_REIMBURSEMENT_STATUS(REIMB_STATUS_ID),
-	REIMB_TYPE_ID INT REFERENCES ERS_REIMBURSEMENT_TYPE(REIMB_TYPE_ID)
-);

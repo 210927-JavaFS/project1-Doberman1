@@ -16,7 +16,7 @@ public class USERS {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int usersID;
 	private String username;
-	private String password;
+	private int password;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -25,7 +25,7 @@ public class USERS {
 	private USER_ROLES userRole;
 	
 	
-	public USERS(int usersID, String username, String password, String firstName, String lastName, String email,
+	public USERS(int usersID, String username, int password, String firstName, String lastName, String email,
 			USER_ROLES userRole) {
 		super();
 		this.usersID = usersID;
@@ -38,7 +38,7 @@ public class USERS {
 	}
 
 
-	public USERS(String username, String password, String firstName, String lastName, String email,
+	public USERS(String username, int password, String firstName, String lastName, String email,
 			USER_ROLES userRole) {
 		super();
 		this.username = username;
@@ -70,12 +70,12 @@ public class USERS {
 	}
 
 
-	public String getPassword() {
+	public int getPassword() {
 		return password;
 	}
 
 
-	public void setPassword(String password) {
+	public void setPassword(int password) {
 		this.password = password;
 	}
 
@@ -120,6 +120,9 @@ public class USERS {
 	}
 
 
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -127,7 +130,7 @@ public class USERS {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + password;
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		result = prime * result + usersID;
@@ -159,10 +162,7 @@ public class USERS {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
+		if (password != other.password)
 			return false;
 		if (userRole == null) {
 			if (other.userRole != null)
