@@ -5,7 +5,6 @@ package com.revature;
 import com.revature.controllers.Controller;
 import com.revature.controllers.ReimbController;
 import com.revature.controllers.UserController;
-import com.revature.services.initializeService;
 
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
@@ -16,8 +15,6 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		//initializeService initialize = new initializeService();
-		//initialize.initialize();
 		
 		app = Javalin.create((config)->{
 			config.addStaticFiles("/static2", Location.CLASSPATH);

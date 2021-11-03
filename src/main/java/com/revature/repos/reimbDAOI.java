@@ -23,7 +23,7 @@ public class reimbDAOI implements reimbDAO{
 		
 		List<REIMBURSEMENT> list = findAllReimb();
 		List<REIMBURSEMENT> newlist = findAllReimb();
-		System.out.print(list);
+		//System.out.print(list);
 		
 		
 		for(REIMBURSEMENT r : list) {
@@ -44,12 +44,15 @@ public class reimbDAOI implements reimbDAO{
 	
 	public REIMBURSEMENT findByID(int ID) {
 		Session session = HibernateUtil.getSession();
+		
 		return session.get(REIMBURSEMENT.class, ID);
+		
 	}
 
 	
 	public boolean createReimb(REIMBURSEMENT reimb) {
 		try {
+		reimb.setResolved(null);
 		Session session = HibernateUtil.getSession();
 		Transaction tx  = session.beginTransaction();
 		session.save(reimb);
@@ -65,7 +68,9 @@ public class reimbDAOI implements reimbDAO{
 
 	
 	public boolean updateReimb(REIMBURSEMENT reimb) {
+		
 		try {
+			
 			Session session = HibernateUtil.getSession();
 			Transaction tx  = session.beginTransaction();
 			session.merge(reimb);

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reimbursements</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
 </head>
 
 <body class="container-fluid">
@@ -23,30 +23,31 @@
 
     <div class="row" id="loginFailure"></div>
     
-<p>
-    version 3.2
+
 <p>==========================================</p>
 <p>Employee Tools:</p>
 <br>
 <p>Create new reimbursement request by filling out the fields:</p>
 <form class="form-control">
+   
     <label for="amount">Amount:</label>
     <input type="text" id="amount" name="amount">
     <label for="description">Description:</label>
     <input type="text" id="description" name="description">
+    
     <div>Type:</div>
     <form>
         <label for="lodging">Lodging:</label>
-        <input class = "theType" type="radio" id="lodging" name="Type" value = 1>
+        <input class = "theType" type="radio" id="lodging" name="Type" value = "1">
         <br>
         <label for="travel">Travel:</label>
-        <input class = "theType" type="radio" id="travel" name="Type" value = 2>
+        <input class = "theType" type="radio" id="travel" name="Type" value = "2">
         <br>
         <label for="food">Food:</label>
-        <input class = "theType" type="radio" id="food" name="Type" value = 3>
+        <input class = "theType" type="radio" id="food" name="Type" value = "3">
         <br>
         <label for="other">Other:</label>
-        <input class = "theType" type="radio" id="other" name="Type" value =4>
+        <input class = "theType" type="radio" id="other" name="Type" value = "4">
     </form>
   </form>
   <button class="btn btn-primary" id="addReimbursement">Create new reimbursement</button>
@@ -59,13 +60,13 @@
       <tr>
         <th class="col-sm-1">Reimbursement ID</th>
         <th class="col-sm-1">Amount</th>
-        <th class="col-sm-2">Description</th>
         <th class="col-sm-2">Time submitted</th>
         <th class="col-sm-2">Time Resolved</th>
-        <th class="col-sm-1">Resolution status</th>
-        <th class="col-sm-1">Reimbursement Type</th>
-        <th class="col-sm-2">Author</th>
-        <th class="col-sm-2">Resolver</th>
+        <th class="col-sm-2">Description</th>
+        <th class="col-sm-1">Author</th>
+        <th class="col-sm-1">Resolver</th>
+        <th class="col-sm-2">Resolution Status</th>
+        <th class="col-sm-2">Type</th>
       </tr>
     </thead>
     <tbody id="employeeBody">
@@ -81,13 +82,13 @@
       <tr>
         <th class="col-sm-1">Reimbursement ID</th>
         <th class="col-sm-1">Amount</th>
-        <th class="col-sm-2">Description</th>
         <th class="col-sm-2">Time submitted</th>
         <th class="col-sm-2">Time Resolved</th>
-        <th class="col-sm-1">Resolution status</th>
-        <th class="col-sm-1">Reimbursement Type</th>
-        <th class="col-sm-2">Author</th>
-        <th class="col-sm-2">Resolver</th>
+        <th class="col-sm-2">Description</th>
+        <th class="col-sm-1">Author</th>
+        <th class="col-sm-1">Resolver</th>
+        <th class="col-sm-2">Resolution Status</th>
+        <th class="col-sm-2">Type</th>
       </tr>
     </thead>
     <tbody id="managerBody">
@@ -103,11 +104,11 @@
     <input type="text" id="approvalID" name="approvalID">
     <form>
         <br>
-        <label for="approve">Approve:</label>
-        <input class = "theStatus" type="radio" id="approved" name="approval" value =1>
+        <label>Approve:</label>
+        <input class = "theStatus" type="radio" id="approved" name="approval" value ="2">
         <br>
-        <label for="deny">Deny:</label>
-        <input class = "theStatus" type="radio" id="denied" name="approval" value =2>
+        <label>Deny:</label>
+        <input class = "theStatus" type="radio" id="denied" name="approval" value ="3">
     </form>
 </form>
 <button class="btn btn-primary" id="submitApproval">Submit</button>
