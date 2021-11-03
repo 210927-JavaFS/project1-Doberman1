@@ -3,8 +3,8 @@ const URL = "http://localhost:8081/";
 let employeeLoginStatus = 0;
 let managerLoginStatus = 0;
 let user = {
-    username:document.getElementById("username").value,
-    password:document.getElementById("password").value
+    username:null,
+    password:null
 }
 let para = document.createElement("p");
         para.innerText = " ";
@@ -65,7 +65,7 @@ submitApproval.onclick = changeReimbStatus;
     async function createReimb(){
         if(employeeLoginStatus === 1){
             let reimb = getReimb();
-            if(reimb.amount!=null && reimb.description!=null){
+            if(reimb.amount!=null && reimb.description!=null && reimb.status.reimbStatus != null && reimb.amount >= 0){
 
             
             let response = await fetch(URL+"reimbursements", {
@@ -79,7 +79,7 @@ submitApproval.onclick = changeReimbStatus;
               console.log("Something went wrong creating your reimbursement.")
             }
         }else{
-            console.log("Fields can't be null.")
+            console.log("Please check your input.")
 
         }
 
@@ -90,13 +90,14 @@ submitApproval.onclick = changeReimbStatus;
 
     function getReimb(){
 
+      let type = "   ";
+
         let newAmount = document.getElementById("amount").value;
         let newDescription = document.getElementById("description").value; 
-        let newType = document.getElementsByClassName("theType").value;
         let newUserRole = {userRoleID: 1, userRole: "employee"}
-        let newAuthor = {username: "isthisbadform", password: 111, firstName: "Elves", lastName: "Prestintoservice", email:"oopsie", userRole:newUserRole}
+        let newAuthor = {username: user.username, password: 111, firstName: "Elves", lastName: "Prestintoservice", email:"oopsie", userRole:newUserRole}
         let newStatus = {reimbStatusID: 4, reimbStatus: "pending"};
-        let newTypeObj = {reimbTypeID: newType, reimbType: document.getElementsByClassName("theType").id}
+        let newTypeObj = {reimbTypeID: parseInt(document.querySelector('input[name="Type"]:checked').value)}
 
 
       
@@ -155,10 +156,13 @@ submitApproval.onclick = changeReimbStatus;
              }else if(cell === "password"){
                break;
              }else if(cell === "submitted"){
-               td.innerText= employee[cell];
+              let date = new Date(employee[cell]);
+               td.innerText= date.toString();
              }else if(cell === "resolved"){
-               td.innerText= employee[cell];
-             }else{
+              if(employee["resolver"]!=null){
+             let date = new Date(employee[cell]);
+             td.innerText= date.toString();}
+              }else{
                td.innerText=employee[cell];
             }
              row.appendChild(td);
@@ -200,7 +204,9 @@ submitApproval.onclick = changeReimbStatus;
              if(cell === "author"){
                 td.innerText = employee[cell].firstName+" "+employee[cell].lastName;
              }else if(cell === "resolver"){
-                if(employee[cell] != null){td.innerText = employee[cell].firstName+" "+employee[cell].lastName;}else{td.innerText = null}
+                if(employee[cell] != null){
+                  
+                  td.innerText = employee[cell].firstName+" "+employee[cell].lastName;}else{td.innerText = null}
              }else if(cell === "status"){
                td.innerText=employee[cell].reimbStatus;
              }else if(cell === "type"){
@@ -208,10 +214,14 @@ submitApproval.onclick = changeReimbStatus;
               }else if(cell === "password"){
                 break;
               }else if(cell === "submitted"){
-                td.innerText= employee[cell];
-              }else if(cell === "resolved"){
-                td.innerText= employee[cell];
-              }else{
+                let date = new Date(employee[cell]);
+                 td.innerText= date.toString();
+               }else if(cell === "resolved"){
+                 if(employee["resolver"]!=null){
+                let date = new Date(employee[cell]);
+                td.innerText= date.toString();
+                 }
+               }else{
                 td.innerText=employee[cell];
              }
              row.appendChild(td);
@@ -244,11 +254,10 @@ submitApproval.onclick = changeReimbStatus;
 
         let newAmount = document.getElementById("approvalID").value;
         let newDescription = document.getElementById("description").value; 
-        let newType = document.getElementsByClassName("theType").value;
         let newUserRole = {userRoleID: 1, userRole: "employee"}
-        let newAuthor = {username: "isthisbadform", password: 111, firstName: "Elves", lastName: "Prestintoservice", email:"oopsie", userRole:newUserRole}
-        let newStatus = {reimbStatusID: document.getElementsByClassName("theStatus").value, reimbStatus: document.getElementsByClassName("theStatus").id};
-        let newTypeObj = {reimbTypeID: newType, reimbType: document.getElementsByClassName("theType").id}
+        let newAuthor = {username: user.username, password: 111, firstName: "Elves", lastName: "Prestintoservice", email:"oopsie", userRole:newUserRole}
+        let newStatus = {reimbStatusID: parseInt(document.querySelector('input[name="approval"]:checked').value)};
+        let newTypeObj = {reimbTypeID: 1, reimbType: "other"}
 
 
       
@@ -258,7 +267,7 @@ submitApproval.onclick = changeReimbStatus;
           resolved:Date.now(),
           description:newDescription,
           author:newAuthor,
-          resolver:null,
+          resolver:newAuthor,
           status:newStatus,
           type:newTypeObj
         }

@@ -6,18 +6,18 @@ import com.revature.repos.usersDAOI;
 
 public class UserService {
 	
-	private usersDAO userDAO = new usersDAOI();
+	private static usersDAO userDao = new usersDAOI();
 	
-	boolean createUser(USERS user) {
+	//boolean createUser(USERS user) {
 		
-		return userDAO.createUser(user);
-	}
-	boolean updateUser(USERS user) {
+	//	return userDao.createUser(user);
+	//}
+	//boolean updateUser(USERS user) {
 		
-		return userDAO.updateUser(user);
-	}
-	public USERS getUser(String username) {
-		USERS user = userDAO.getUser(username);
+	//	return userDao.updateUser(user);
+	//}
+	public static USERS getUser(String username) {
+		USERS user = userDao.getUser(username);
 		if(user != null) {
 			
 			return user;

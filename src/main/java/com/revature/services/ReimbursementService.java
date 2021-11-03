@@ -26,7 +26,7 @@ public class ReimbursementService {
 			
 			return reimb;
 		}else {
-			return new REIMBURSEMENT();
+			return null;
 			
 		}
 	}
@@ -35,7 +35,9 @@ public class ReimbursementService {
 		
 	}
 	public boolean updateReimb(REIMBURSEMENT reimb) {
-		return reimbDAO.createReimb(reimb);
+		System.out.println("in the service");
+		return reimbDAO.updateReimb(reimb);
+		
 		
 	}
 }

@@ -7,18 +7,18 @@ import com.revature.repos.typeDAOI;
 
 public class TypeService {
 	
-	private typeDAO typeDAO = new typeDAOI();
+	//private typeDAO typeDAO = new typeDAOI();
 
-	REIMBURSEMENT_TYPE getType(REIMBURSEMENT reimb) {
+	//REIMBURSEMENT_TYPE getType(REIMBURSEMENT reimb) {
 		
-		REIMBURSEMENT_TYPE type = typeDAO.getType(reimb);
-		if(type != null) {
+	//	REIMBURSEMENT_TYPE type = typeDAO.getType(reimb);
+	//	if(type != null) {
 			
-			return type;
-		}else {
-			return new REIMBURSEMENT_TYPE();
+	//		return type;
+	//	}else {
+	//		return new REIMBURSEMENT_TYPE();
 			
-		}
-	}
+	//	}
+	//}
 	
 }

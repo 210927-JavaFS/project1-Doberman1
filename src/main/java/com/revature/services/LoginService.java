@@ -7,12 +7,14 @@ import com.revature.repos.usersDAOI;
 
 public class LoginService {
 
-	public static USERS user = new USERS();
+	public USERS user = new USERS();
 	private usersDAO userDao = new usersDAOI();
+	
+	//public String username;
 	
 	public boolean login(UserDTO userDto) {
 		
-		
+		//username = userDto.username;
 		USERS user = userDao.getUser(userDto.username);
 		
 		if(user!=null && (userDto.password.hashCode()==user.getPassword())) {

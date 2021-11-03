@@ -7,18 +7,17 @@ import com.revature.repos.statusDAOI;
 
 public class StatusService {
 
-	private statusDAO statusDAO = new statusDAOI();
-	
-	REIMBURSEMENT_STATUS getStatus(REIMBURSEMENT reimb){
-		
-		REIMBURSEMENT_STATUS status = statusDAO.getStatus(reimb);
-		if(status != null) {
-			
-			return status;
-		}else {
-			return new REIMBURSEMENT_STATUS();
-			
-		}
-	}
+	/*
+	 * private statusDAO statusDAO = new statusDAOI();
+	 * 
+	 * REIMBURSEMENT_STATUS getStatus(REIMBURSEMENT reimb){
+	 * 
+	 * REIMBURSEMENT_STATUS status = statusDAO.getStatus(reimb); if(status != null)
+	 * {
+	 * 
+	 * return status; }else { return new REIMBURSEMENT_STATUS();
+	 * 
+	 * } }
+	 */
 	
 }
