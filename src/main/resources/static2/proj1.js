@@ -1,4 +1,5 @@
 const URL = "http://localhost:8081/";
+//const URL = "http://mybucketforprojects.s3-website.us-east-2.amazonaws.com/"
 
 let employeeLoginStatus = 0;
 let managerLoginStatus = 0;
