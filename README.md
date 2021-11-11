@@ -30,13 +30,13 @@ Prettier user interace
 ## Setting up the application:
 
 **Clone the repository onto your computer**
-![](./imgs/cloning.jpg)
+![](./imgs/cloning.JPG)
 
 **Import an existing Maven project into your IDE**
-![](./imgs/importing.jpg)
+![](./imgs/importing.JPG)
 
 **Select the folder into which you cloned the repository**
-![](./imgs/selecting.jpg)
+![](./imgs/selecting.JPG)
 
 **Run the Main class as a java application**
 ![](./imgs/running.png)
