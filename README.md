@@ -27,22 +27,25 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 Multiple pages/ routing to hide inaccessbile functionality  
 Prettier user interace
 
-##Setting up my application:
+## Setting up the application:
 
 **Clone the repository onto your computer**  
-![](./imgs/logical.jpg)
+![](./imgs/cloning.jpg)
 
-**Logical Model**
-![](./imgs/logical.jpg)
+**Import an existing Maven project into your IDE**
+![](./imgs/importing.jpg)
 
-**Physical Model**
-![](./imgs/physical.jpg)
+**Select the folder into which you cloned the repository**
+![](./imgs/selecting.jpg)
 
-**Use Case Diagram**
-![](./imgs/use-case.jpg)
+**Run the Main class as a java application**
+![](./imgs/running.png)
 
-**Activity Diagram**
-![](./imgs/activity.jpg)
+**Run the PostgreSQL script in a database instance**
+![](./imgs/database.png)
+
+**Head to a browser and navigate to http://localhost:8081/proj1.html**
+![](./imgs/navigating.png)
 
 ## Technical Requirements
 
