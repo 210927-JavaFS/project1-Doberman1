@@ -47,12 +47,8 @@ Prettier user interace
 **Head to a browser and navigate to http://localhost:8081/proj1.html**
 ![](./imgs/navigating.png)
 
-## Technical Requirements
+## Usage
 
-The back-end system shall use Hibernate to connect to an AWS RDS Postgres database. The middle tier shall use Javalin technology for dynamic Web application development. The front-end view shall use HTML/JavaScript to make an application that can call server-side components RESTfully. Passwords shall be encrypted in Java and securely stored in the database. The middle tier shall follow proper layered architecture, have reasonable (~70%) test coverage of the service layer, and implement Logback for appropriate logging. 
-
-**Stretch Goals:**
-* Replace HTML/JavaScript with an Angular single page application.
-* Users can upload a document or image of their receipt when submitting reimbursements which can stored in the database and reviewed by a financial manager.
-* Application shall be hosted remotely on an EC2.
-* Static files (webpages) shall be hosted on an S3 bucket. 
+To use any features, simply follow the displayed instructions! Just make sure to login first. A sample manager has a username of "blake" and password of "password". A sample employee has a username of "tim" and password of "revature". Thanks for checking out my reimbursement project!  
+**Sample:**
+![](./imgs/usage.png)
