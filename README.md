@@ -25,7 +25,12 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 
 **Possible future developement features:**  
 Multiple pages/ routing to hide inaccessbile functionality  
-Prettier user interace  
+Prettier user interace
+
+##Setting up my application:
+
+**Clone the repository onto your computer**  
+![](./imgs/logical.jpg)
 
 **Logical Model**
 ![](./imgs/logical.jpg)
