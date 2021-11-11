@@ -1,5 +1,10 @@
 package com.revature;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
 //import java.util.Date;
 
 import com.revature.controllers.Controller;
@@ -15,9 +20,18 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		/*
+		 * try { URL myURL = new
+		 * URL("http://mybucketforprojects.s3-website.us-east-2.amazonaws.com/");
+		 * URLConnection myURLConnection = myURL.openConnection();
+		 * myURLConnection.connect(); } catch (MalformedURLException e) { // new URL()
+		 * failed // ... } catch (IOException e) { // openConnection() failed // ... }
+		 */
+		
 		
 		app = Javalin.create((config)->{
 			config.addStaticFiles("/static2", Location.CLASSPATH);
+			//config.addSinglePageRoot("http://mybucketforprojects.s3-website.us-east-2.amazonaws.com/", "http://mybucketforprojects.s3-website.us-east-2.amazonaws.com/");
 		});
 		
 		configure(new ReimbController(), new UserController());

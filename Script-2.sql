@@ -1,4 +1,4 @@
---Create Database project_1;
+Create Database project_1;
 
 INSERT INTO hibernate.user_roles (userroleid,userrole)
 	VALUES (1,'employee');
@@ -32,3 +32,15 @@ INSERT INTO hibernate.users (usersid,email,firstname,lastname,"password",usernam
 INSERT INTO hibernate.users (usersid,email,firstname,lastname,"password",username,userroleid)
 	VALUES (4,'Blake@hotmail.com','Blake','Dobbs','1216985755','blake',2);
 
+
+
+
+
+
+
+
+
+INSERT INTO user_roles VALUES ('employee');
+	
+INSERT INTO USER_ROLES
+	VALUES ('manager');
