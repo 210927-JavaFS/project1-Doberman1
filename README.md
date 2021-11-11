@@ -29,7 +29,7 @@ Prettier user interace
 
 ## Setting up the application:
 
-**Clone the repository onto your computer**  
+**Clone the repository onto your computer**
 ![](./imgs/cloning.jpg)
 
 **Import an existing Maven project into your IDE**
