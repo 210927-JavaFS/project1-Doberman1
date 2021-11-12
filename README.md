@@ -38,10 +38,13 @@ Prettier user interace
 **Select the folder into which you cloned the repository**  
 ![](./imgs/selecting.JPG)
 
+**Run the first line of the PostgreSQL script**  
+![](./imgs/create.png)
+
 **Run the Main class as a java application**  
 ![](./imgs/running.png)
 
-**Run the PostgreSQL script in a database instance**  
+**Run the rest of the PostgreSQL script in a database instance**  
 ![](./imgs/database.png)
 
 **Head to a browser and navigate to http://localhost:8081/proj1.html**  
