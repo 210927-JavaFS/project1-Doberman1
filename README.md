@@ -29,26 +29,26 @@ Prettier user interace
 
 ## Setting up the application:
 
-**Clone the repository onto your computer**
+**Clone the repository somewhere onto your computer with git**  
 ![](./imgs/cloning.JPG)
 
-**Import an existing Maven project into your IDE**
+**Import an existing Maven project into your IDE**  
 ![](./imgs/importing.JPG)
 
-**Select the folder into which you cloned the repository**
+**Select the folder into which you cloned the repository**  
 ![](./imgs/selecting.JPG)
 
-**Run the Main class as a java application**
+**Run the Main class as a java application**  
 ![](./imgs/running.png)
 
-**Run the PostgreSQL script in a database instance**
+**Run the PostgreSQL script in a database instance**  
 ![](./imgs/database.png)
 
-**Head to a browser and navigate to http://localhost:8081/proj1.html**
+**Head to a browser and navigate to http://localhost:8081/proj1.html**  
 ![](./imgs/navigating.png)
 
 ## Usage
 
 To use any features, simply follow the displayed instructions! Just make sure to login first. A sample manager has a username of "blake" and password of "password". A sample employee has a username of "tim" and password of "revature". Thanks for checking out my reimbursement project!  
-**Sample:**
+**Sample:**  
 ![](./imgs/usage.png)
