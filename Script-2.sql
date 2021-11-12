@@ -33,13 +33,6 @@ INSERT INTO hibernate.users (usersid,email,firstname,lastname,"password",usernam
 	VALUES (4,'Blake@hotmail.com','Blake','Dobbs','1216985755','blake',2);
 
 
-
-
-
-
-
-
-
 INSERT INTO user_roles VALUES ('employee');
 	
 INSERT INTO USER_ROLES
